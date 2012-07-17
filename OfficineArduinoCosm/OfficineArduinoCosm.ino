@@ -1,5 +1,6 @@
 /*
-  Pachube sensor client with Strings
+  Officine Arduino Temperature and Light sensors connected to:
+  Cosm client with Strings
  
  This sketch connects an analog sensor to Cosm (http://www.cosm.com)
  using a Wiznet Ethernet shield. You can use the Arduino Ethernet shield, or
