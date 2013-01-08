@@ -10,8 +10,8 @@
 
 //Calibrations
 const int volt = 220;
-const int ct_calibration = 29;
-const int temp_offset = 0;
+const float ct_calibration = 29;
+const float temp_offset = 1.2;
 
 //Sensor pins
 const int tempSensorPin = A0;
@@ -19,7 +19,7 @@ const int lightSensorPin = A1;
 const int currentSensorPin = A2;
 
 float tempValue = 0;
-double Irms = 0;
+float Irms = 0;
 int lightValue = 0;
 
 // Create an Emon instance
