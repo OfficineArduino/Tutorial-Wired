@@ -74,6 +74,7 @@ char server[] = "emoncms.org";     // name address for emoncms.org
 //IPAddress server(213, 138, 101, 177);  // numeric IP for emoncms.org (no DNS)
 
 String apikey = "abababcdcdcdefefef001122334567890";  //api key
+int node = 0; //if 0, not used
 
 unsigned long lastConnectionTime = 0;          // last time you connected to the server, in milliseconds
 boolean lastConnected = false;                 // state of the connection last time through the main loop
@@ -171,6 +172,10 @@ void sendData() {
     // send the HTTP GET request:
     client.print("GET /api/post?apikey=");
     client.print(apikey);
+    if (node > 0) {
+      client.print("&node=");
+      client.print(node);
+    }
     client.print("&json={temp");
     client.print(":");
     client.print(tempValue + temp_offset);    
