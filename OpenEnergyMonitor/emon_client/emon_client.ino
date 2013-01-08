@@ -46,7 +46,8 @@
   // for auto configuration:
   IPAddress ip(192, 168, 1, 2);
   IPAddress subnet(255, 255, 255, 0);
-  IPAddress gw_dns(192, 168, 1, 254);
+  IPAddress dns(8, 8, 8, 8);
+  IPAddress gw(192, 168, 1, 254);
   
   EthernetClient client;
 #endif
@@ -111,7 +112,7 @@ void setup() {
   if (!Ethernet.begin(mac)) {
     // if DHCP fails, start with a hard-coded address:
     Serial.println("Failed to get an IP address using DHCP, forcing manually");
-    Ethernet.begin(mac, ip, gw_dns, gw_dns);
+    Ethernet.begin(mac, ip, dns, gw, subnet);
   }
 #endif  
 
