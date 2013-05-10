@@ -11,6 +11,7 @@
   http://arduino.cc/en/Tutorial/WebClientRepeating
 */
 
+char foo;  //without a simple variable declaration, use of #ifdef at the top of your code raises an error!
 
 //if using a W5100 based Ethernet shield, comment out the following line; 
 //leave untouched if using Arduino Wifi Shield
@@ -46,7 +47,7 @@
   // for auto configuration:
   IPAddress ip(192, 168, 1, 2);
   IPAddress subnet(255, 255, 255, 0);
-  IPAddress dns(8, 8, 8, 8);
+  IPAddress DNS(8, 8, 8, 8);
   IPAddress gw(192, 168, 1, 254);
   
   EthernetClient client;
