@@ -6,7 +6,7 @@
 
 #include <IRremote.h>
 #include <TinkerKit.h>
-int RECV_PIN = 11;
+int RECV_PIN = A0;
 
 IRrecv irrecv(RECV_PIN);
 decode_results results;
