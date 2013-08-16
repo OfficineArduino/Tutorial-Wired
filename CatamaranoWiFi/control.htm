@@ -1,0 +1,44 @@
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Catamarano WiFi</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script>
+      $(function() {
+      $( "#slider" ).slider({ value: 90, min:30, max:149 });
+    })
+    function defVal() {
+      $( "#value" ).html("90");
+    }
+    </script>
+  </head>
+  <body onload="defVal()">  
+    <div id="slider"></div>
+    <div id="value"></div>
+    <div align="center">
+      <input type="button" id="fanButton" onclick="buttonAction()" value="FAN is OFF" />
+    </div>
+    <script type="text/javascript"> 
+      $("#slider").slider({
+        stop: function( event, ui ) {
+          s = $("#slider").slider("value");	
+          $("#value").html(s);
+          s = "dir=" + s;
+          $.get(s, function() {
+          });
+        } 
+      });
+
+      function buttonAction() {   
+        s = "fan";
+        $.get(s, function( data ) {
+          document.getElementById("fanButton").value = data;
+        });
+      }
+    </script>
+  </body>
+</html>
