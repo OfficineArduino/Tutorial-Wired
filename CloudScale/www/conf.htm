@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<head>
+<title>Yun Messages</title>
+<script type="text/javascript" src="zepto.min.js"></script>        
+</head>
+
+<body onload="storageValue()">
+  <H1> Configure Buttons </H1> <br>
+     <form name="buttonConf" onSubmit="return updateStorage()">
+       button #1<input type="text" id="button1" value="not set"><br>
+       button #2<input type="text" id="button2" value="not set"><br>
+       button #3<input type="text" id="button3" value="not set"><br>
+       button #4<input type="text" id="button4" value="not set"><br>
+       <input type="submit" id="update" value="update" >
+      </form>
+
+  <script type="text/javascript">     
+  function storageValue() { 
+  $.get("/data/get", function(data) {
+    document.getElementById("button1").value = data.value.button1;
+    document.getElementById("button2").value = data.value.button2;
+    document.getElementById("button3").value = data.value.button3;
+    document.getElementById("button4").value = data.value.button4;
+    }
+  );
+  }
+  
+  var c;
+
+  function updateProgess() {
+    c += 1;
+    var str="updating";
+    if (c==4) {
+      str="update"
+    }
+    document.getElementById("update").value = str;
+  }
+          
+  function updateStorage() {       
+    c=0;
+    document.getElementById("update").value = "updating";
+    $.get("/data/put/button1/" + document.getElementById("button1").value, updateProgess);
+    $.get("/data/put/button2/" + document.getElementById("button2").value, updateProgess);
+    $.get("/data/put/button3/" + document.getElementById("button3").value, updateProgess);
+    $.get("/data/put/button4/" + document.getElementById("button4").value, updateProgess);
+
+    return false;
+  }
+  </script>
+
+</body>
